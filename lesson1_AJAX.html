@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <head>
 	<title>Form validation example</title>
-	<script></script>
+	<script>
+	 function loadDoc(){
+
+	 	debugger
+		
+		var xmlhttp;
+
+          if(window.XMLHttpRequest){
+          	xmlhttp = new XMLHttpRequest();
+
+          }else{
+          	xmlhttp = new ActiveObject("Microsoft.XMLHTTP");
+          }
+
+          xmlhttp.onreadystatechange = function(){
+          	if(this.readyState == 4 && this.status == 200){
+          		document.getElementById("message").innerHTML = this.responseText;
+          	}
+          };
+
+          xmlhttp.open("GET", "http://localhost:8080/js/sfile.txt", true);
+          xmlhttp.send();
+        }
+     	</script>
 </head>
+ <div id="message">Here will be message from server...</div>
+ <input type="button" onclick="loadDoc()" value="Load answer from server"/>
 </html>
